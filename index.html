@@ -65,18 +65,40 @@ body[data-theme="dark"]{
 
 <style>
 #atlasAuthGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(circle at 15% 10%,#dff7f0 0,transparent 38%),linear-gradient(135deg,#eef5f3,#f7faf9);font-family:Arial,Tahoma,sans-serif;color:#183b37}
-#atlasAuthGate[hidden]{display:none!important}#atlasAuthCard{width:min(100%,470px);background:#fff;border:1px solid #dcebe6;border-radius:22px;padding:30px;box-shadow:0 22px 70px #123b3020;text-align:right}#atlasAuthCard h1{font-size:25px;margin:0 0 8px;color:#126b5d}#atlasAuthCard p{color:#61736f;line-height:1.8;margin:0 0 20px}#atlasAuthCard label{display:block;font-weight:700;margin:14px 0 7px}#atlasAuthCard input{box-sizing:border-box;width:100%;padding:13px 14px;border:1px solid #d3e2dd;border-radius:11px;font-size:16px;direction:ltr;text-align:left}#atlasAuthCard button{border:0;border-radius:11px;background:#087f70;color:#fff;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-top:14px}#atlasAuthCard button.secondary{background:#e8f4f1;color:#126b5d}#atlasAuthStatus{font-size:13px;min-height:24px;color:#9b4d22;margin-top:12px;line-height:1.6}#atlasOtpFields,#atlasAdminImport{display:none}#atlasAuthBrand{font-size:12px;letter-spacing:2px;color:#78928a;margin-bottom:12px}#atlasAuthGate .auth-note{font-size:12px;color:#82938e;margin-top:18px}body.atlas-locked .app-shell,body.atlas-locked .overlay,body.atlas-locked .image-lightbox{display:none!important}body.atlas-read-only .admin-control{display:none!important}
+#atlasAuthGate[hidden]{display:none!important}#atlasAuthCard{width:min(100%,470px);background:#fff;border:1px solid #dcebe6;border-radius:22px;padding:30px;box-shadow:0 22px 70px #123b3020;text-align:right}#atlasAuthCard h1{font-size:25px;margin:0 0 8px;color:#126b5d}#atlasAuthCard p{color:#61736f;line-height:1.8;margin:0 0 20px}#atlasAuthCard label{display:block;font-weight:700;margin:14px 0 7px}#atlasAuthCard input{box-sizing:border-box;width:100%;padding:13px 14px;border:1px solid #d3e2dd;border-radius:11px;font-size:16px;direction:ltr;text-align:left}#atlasAuthCard button{border:0;border-radius:11px;background:#087f70;color:#fff;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-top:14px}#atlasAuthCard button.secondary{background:#e8f4f1;color:#126b5d}#atlasAuthStatus{font-size:13px;min-height:24px;color:#9b4d22;margin-top:12px;line-height:1.6}#atlasOtpFields,#atlasCreatePasswordFields,#atlasAdminImport{display:none}#atlasAuthBrand{font-size:12px;letter-spacing:2px;color:#78928a;margin-bottom:12px}#atlasAuthGate .auth-note{font-size:12px;color:#82938e;margin-top:18px}#atlasAuthCard .auth-hint{font-size:12px;color:#71847e;margin-top:9px;line-height:1.6}body.atlas-locked .app-shell,body.atlas-locked .overlay,body.atlas-locked .image-lightbox{display:none!important}body.atlas-read-only .admin-control{display:none!important}
 </style>
 <div id="atlasAuthGate" dir="rtl">
  <div id="atlasAuthCard">
   <div id="atlasAuthBrand">HATEM CLINICAL ATLAS</div>
   <h1>الموسوعة السريرية</h1>
-  <p>سجّل الدخول إلى مكتبتك الطبية الآمنة. سنرسل رمز تحقق إلى بريدك الإلكتروني.</p>
-  <div id="atlasEmailFields"><label for="atlasEmail">البريد الإلكتروني</label><input id="atlasEmail" type="email" autocomplete="email" placeholder="name@example.com"><button id="atlasSendOtp">إرسال رمز الدخول</button></div>
-  <div id="atlasOtpFields"><label for="atlasOtp">رمز التحقق</label><input id="atlasOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="أدخل الرمز المرسل إلى بريدك"><button id="atlasVerifyOtp">تحقق وتسجيل الدخول</button><button class="secondary" id="atlasBackEmail">العودة للبريد الإلكتروني</button></div>
+  <p id="atlasAuthDescription">أدخل بريدك الإلكتروني وكلمة المرور. عند أول استخدام، تحقّق من بريدك مرة واحدة ثم أنشئ كلمة مرور خاصة بك.</p>
+  <label for="atlasEmail">البريد الإلكتروني</label>
+  <input id="atlasEmail" type="email" autocomplete="username" inputmode="email" placeholder="name@example.com">
+  <div id="atlasPasswordLoginFields">
+   <label for="atlasPassword">كلمة المرور</label>
+   <input id="atlasPassword" type="password" autocomplete="current-password" placeholder="أدخل كلمة المرور">
+   <button id="atlasPasswordLogin">دخول</button>
+   <button class="secondary" id="atlasUseOtp">أول مرة أو نسيت كلمة المرور؟ تحقّق من البريد</button>
+   <div class="auth-hint">بعد إنشاء كلمة المرور، ستستخدم البريد وكلمة المرور للدخول دون رمز تحقق في كل مرة.</div>
+  </div>
+  <div id="atlasOtpFields">
+   <label for="atlasOtp">رمز التحقق المرسل إلى بريدك</label>
+   <input id="atlasOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="أدخل الرمز">
+   <button id="atlasVerifyOtp">تحقق من البريد والمتابعة</button>
+   <button class="secondary" id="atlasBackLogin">العودة إلى تسجيل الدخول</button>
+  </div>
+  <div id="atlasCreatePasswordFields">
+   <p>تم التحقق من بريدك. أنشئ كلمة مرور لا تقل عن 12 حرفًا، ثم استخدمها في مرات الدخول القادمة.</p>
+   <label for="atlasNewPassword">إنشاء كلمة مرور</label>
+   <input id="atlasNewPassword" type="password" autocomplete="new-password" minlength="12" placeholder="12 حرفًا على الأقل">
+   <label for="atlasConfirmPassword">تأكيد كلمة المرور</label>
+   <input id="atlasConfirmPassword" type="password" autocomplete="new-password" minlength="12" placeholder="أعد كتابة كلمة المرور">
+   <button id="atlasSavePassword">حفظ كلمة المرور والدخول</button>
+   <button class="secondary" id="atlasCancelPasswordSetup">إلغاء والعودة إلى تسجيل الدخول</button>
+  </div>
   <div id="atlasAdminImport"><hr style="border:0;border-top:1px solid #e4eeea;margin:20px 0"><strong>تهيئة المحتوى لأول مرة</strong><p>لم يُعثر على محتوى في قاعدة البيانات. بصفتك المسؤول، ارفع ملف ZIP الأصلي للموسوعة لنقل النصوص والصور إلى التخزين المحمي.</p><label for="atlasSourceZip">ملف الموقع الأصلي ZIP</label><input id="atlasSourceZip" type="file" accept=".zip,application/zip"><button id="atlasRunImport">استيراد محتوى الموسوعة بأمان</button></div>
   <div id="atlasAuthStatus" role="status" aria-live="polite"></div>
-  <div class="auth-note">لا تشارك رمز الدخول مع أي شخص. لا تُضمّن البيانات الطبية في ملف الموقع العام.</div>
+  <div class="auth-note">لا تشارك كلمة المرور أو رمز التحقق مع أي شخص. لا تُضمّن البيانات الطبية في ملف الموقع العام.</div>
  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
@@ -292,10 +314,29 @@ let SOURCE_UNITS=[];
 let ASSETS={};
 let SOURCE_COUNT=0;
 let BASE_IDS=new Set();
-let atlasSupabase=null,atlasUser=null,atlasRole='member',atlasStatus='inactive',atlasCloudReady=false,atlasCloudStateLoaded=false,atlasOtpEmail='',atlasAuthRestorePromise=null,atlasSessionReady=false;
+let atlasSupabase=null,atlasUser=null,atlasRole='member',atlasStatus='inactive',atlasCloudReady=false,atlasCloudStateLoaded=false,atlasOtpEmail='',atlasAuthRestorePromise=null,atlasSessionReady=false,atlasAuthMode='password';
 const ATLAS_SUPABASE_URL='https://zibakudaydowmdgudydk.supabase.co';
 const ATLAS_SUPABASE_KEY='sb_publishable_fY5z73lk9IJwGyvnBU2zFg_pMC99dkc';
+const ATLAS_AUTH_STORAGE_KEY='sb-zibakudaydowmdgudydk-auth-token';
+const ATLAS_SESSION_BACKUP_KEY='hatem-clinical-atlas-session-v1';
+const ATLAS_PENDING_PASSWORD_KEY='hatem-clinical-atlas-password-setup-pending-v1';
+const ATLAS_PENDING_EMAIL_KEY='hatem-clinical-atlas-password-setup-email-v1';
 function atlasSetStatus(msg){const el=document.getElementById('atlasAuthStatus');if(el)el.textContent=msg||'';}
+function atlasSaveSessionBackup(session){
+ if(!session?.access_token||!session?.refresh_token)return false;
+ const backup={access_token:session.access_token,refresh_token:session.refresh_token,saved_at:Date.now()};
+ try{window.localStorage.setItem(ATLAS_SESSION_BACKUP_KEY,JSON.stringify(backup));return window.localStorage.getItem(ATLAS_SESSION_BACKUP_KEY)!==null;}
+ catch(e){console.error('Atlas session backup could not be stored',e);return false;}
+}
+function atlasReadSessionBackup(){
+ try{const raw=window.localStorage.getItem(ATLAS_SESSION_BACKUP_KEY);if(!raw)return null;const value=JSON.parse(raw);return value?.access_token&&value?.refresh_token?value:null;}
+ catch(e){return null;}
+}
+function atlasClearSessionBackup(){try{window.localStorage.removeItem(ATLAS_SESSION_BACKUP_KEY);}catch(e){console.warn('Atlas session backup could not be removed',e);}}
+function atlasResumePendingPasswordSetup(session){
+ try{if(window.localStorage.getItem(ATLAS_PENDING_PASSWORD_KEY)!=='1')return false;const email=window.localStorage.getItem(ATLAS_PENDING_EMAIL_KEY)||session?.user?.email||'';if(email)$('atlasEmail').value=email;atlasAuthMode='password_setup';$('atlasPasswordLoginFields').style.display='none';$('atlasOtpFields').style.display='none';$('atlasCreatePasswordFields').style.display='block';$('atlasAuthDescription').textContent='تم التحقق من بريدك الإلكتروني. أكمل إنشاء كلمة مرور لحسابك؛ ستستخدمها في مرات الدخول القادمة.';atlasSetStatus('جلسة التحقق محفوظة. أكمل إنشاء كلمة المرور للمتابعة.');return true;}catch(e){atlasSetStatus('تعذر استعادة خطوة إنشاء كلمة المرور: '+(e.message||String(e)));return false;}
+}
+function atlasClearPendingPasswordSetup(){try{window.localStorage.removeItem(ATLAS_PENDING_PASSWORD_KEY);window.localStorage.removeItem(ATLAS_PENDING_EMAIL_KEY);}catch(e){console.warn('Pending password setup could not be cleared',e);}}
 function atlasSetViewData(payload){DATA={meta:payload.meta||{},sections:payload.sections||[],structured:payload.structured||[],sourceUnits:payload.sourceUnits||[]};BASE_CURATED=DATA.structured.map(normalizeBaseRecord);SOURCE_UNITS=DATA.sourceUnits.map(u=>({...u,category:u.categoryAr,categoryEn:u.categoryEn||u.categoryAr,isSource:true}));SOURCE_COUNT=SOURCE_UNITS.length;BASE_IDS=new Set(BASE_CURATED.map(r=>r.id));}
 function atlasIsEditor(){return atlasStatus==='active'&&['admin','editor'].includes(atlasRole);}
 async function atlasLoadContent(){const {data,error}=await atlasSupabase.from('atlas_content').select('payload').eq('id','main').maybeSingle();if(error)throw error;if(!data?.payload)return false;const payload=data.payload;atlasSetViewData(payload);overrides=payload.overrides||{};customRecords=(payload.customRecords||[]).map(normalizeRecord);customCategories=payload.customCategories||[];atlasCloudStateLoaded=true;return true;}
@@ -308,7 +349,8 @@ async function atlasAfterLogin(sessionOverride=null){
  if(!session)throw new Error('لم يتم العثور على جلسة دخول محفوظة.');
  atlasUser=session.user;atlasRole=atlasUser.app_metadata?.role||'member';atlasStatus=atlasUser.app_metadata?.status||'active';
  if(atlasStatus!=='active')throw new Error('هذا الحساب غير نشط. يرجى مراجعة مسؤول الموسوعة.');
- // Supabase renews expired access tokens automatically; do not force refresh on every page load.
+ // Require every existing account to complete the one-time password setup after email verification.
+ if(atlasUser.user_metadata?.atlas_password_login_enabled!==true){window.localStorage.setItem(ATLAS_PENDING_PASSWORD_KEY,'1');window.localStorage.setItem(ATLAS_PENDING_EMAIL_KEY,atlasUser.email||'');atlasResumePendingPasswordSetup(session);return;}
  const hasContent=await atlasLoadContent();
  if(!hasContent){if(atlasIsEditor()){$('atlasAdminImport').style.display='block';atlasSetStatus('الحساب الإداري جاهز. ارفع ملف ZIP الأصلي لبدء ترحيل المحتوى.');return;}throw new Error('لم يتم تجهيز محتوى الموسوعة بعد. يرجى التواصل مع المسؤول.');}
  await atlasLoadAssets();atlasCloudReady=true;document.body.classList.remove('atlas-locked');$('atlasAuthGate').hidden=true;
@@ -320,16 +362,121 @@ function atlasRestoreSession(session){
 }
 async function atlasStart(){try{
  if(!window.supabase?.createClient)throw new Error('تعذر تحميل مكتبة الاتصال.');
- let authStorage=window.localStorage;
- try{const k='__hatem_atlas_storage_test__';authStorage.setItem(k,'1');authStorage.removeItem(k);}catch(e){authStorage=window.sessionStorage;try{const k='__hatem_atlas_storage_test__';authStorage.setItem(k,'1');authStorage.removeItem(k);atlasSetStatus('تنبيه: المتصفح لا يسمح بالحفظ الدائم؛ ستبقى الجلسة محفوظة ما دامت علامة التبويب مفتوحة.');}catch(e2){throw new Error('المتصفح يمنع حفظ جلسة الدخول. اسمح للموقع بحفظ بياناته ثم أعد فتحه.');}}
- atlasSupabase=window.supabase.createClient(ATLAS_SUPABASE_URL,ATLAS_SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:authStorage,storageKey:'sb-zibakudaydowmdgudydk-auth-token'}});
- atlasSupabase.auth.onAuthStateChange((event,session)=>{if(session&&(event==='INITIAL_SESSION'||event==='SIGNED_IN')&&document.body.classList.contains('atlas-locked'))window.setTimeout(()=>atlasRestoreSession(session).catch(e=>atlasSetStatus(e.message||String(e))),0);});
- $('atlasSendOtp').onclick=async()=>{const email=$('atlasEmail').value.trim();if(!email){atlasSetStatus('أدخل بريدًا إلكترونيًا صحيحًا.');return;}atlasOtpEmail=email;atlasSetStatus('جارٍ إرسال رمز الدخول...');const {error}=await atlasSupabase.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname}});if(error){atlasSetStatus('تعذر إرسال الرمز: '+error.message);return;}$('atlasEmailFields').style.display='none';$('atlasOtpFields').style.display='block';atlasSetStatus('أرسلنا رمز التحقق إلى بريدك. افحص الوارد والرسائل غير المرغوب فيها.');};
- $('atlasVerifyOtp').onclick=async()=>{const token=$('atlasOtp').value.trim();if(!token){atlasSetStatus('أدخل رمز التحقق.');return;}atlasSetStatus('جارٍ التحقق...');const {data,error}=await atlasSupabase.auth.verifyOtp({email:atlasOtpEmail,token,type:'email'});if(error){atlasSetStatus('رمز التحقق غير صحيح أو منتهي الصلاحية: '+error.message);return;}try{await atlasRestoreSession(data?.session);}catch(e){atlasSetStatus(e.message||String(e));}};
- $('atlasBackEmail').onclick=()=>{$('atlasOtpFields').style.display='none';$('atlasEmailFields').style.display='block';atlasSetStatus('');};
+ // Supabase stores the session persistently in localStorage. Do not silently fall back to sessionStorage.
+ const authStorage=window.localStorage;
+ if(authStorage.getItem(ATLAS_PENDING_PASSWORD_KEY)==='1')atlasAuthMode='password_setup';
+ const storageTest='__hatem_atlas_storage_test__';
+ authStorage.setItem(storageTest,'ok');
+ if(authStorage.getItem(storageTest)!=='ok')throw new Error('المتصفح لا يحتفظ ببيانات الموقع.');
+ authStorage.removeItem(storageTest);
+ atlasSupabase=window.supabase.createClient(ATLAS_SUPABASE_URL,ATLAS_SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:authStorage,storageKey:ATLAS_AUTH_STORAGE_KEY}});
+ atlasSupabase.auth.onAuthStateChange((event,session)=>{
+  if(session&&(event==='INITIAL_SESSION'||event==='SIGNED_IN'||event==='TOKEN_REFRESHED'))atlasSaveSessionBackup(session);
+  if(event==='SIGNED_OUT')atlasClearSessionBackup();
+  // OTP is only for first setup or password recovery. Do not open the atlas before a new password is saved.
+  if(session&&event==='INITIAL_SESSION'&&document.body.classList.contains('atlas-locked')){if(!atlasResumePendingPasswordSetup(session))window.setTimeout(()=>atlasRestoreSession(session).catch(e=>atlasSetStatus('تعذر استعادة الجلسة: '+(e.message||String(e)))),0);}
+  if(session&&event==='SIGNED_IN'&&atlasAuthMode==='password'&&document.body.classList.contains('atlas-locked'))window.setTimeout(()=>atlasRestoreSession(session).catch(e=>atlasSetStatus('تعذر فتح الموسوعة: '+(e.message||String(e)))),0);
+ });
+ $('atlasPasswordLogin').onclick=async()=>{
+  const email=$('atlasEmail').value.trim();
+  const password=$('atlasPassword').value;
+  if(!email){atlasSetStatus('أدخل بريدك الإلكتروني.');return;}
+  if(!password){atlasSetStatus('أدخل كلمة المرور.');return;}
+  atlasAuthMode='password';
+  const btn=$('atlasPasswordLogin');btn.disabled=true;
+  atlasSetStatus('جارٍ التحقق من بيانات الدخول...');
+  try{
+   const {data,error}=await atlasSupabase.auth.signInWithPassword({email,password});
+   if(error){
+    const m=String(error.message||'');
+    if(/invalid login credentials|invalid password/i.test(m))atlasSetStatus('البريد أو كلمة المرور غير صحيحة. إذا لم تنشئ كلمة مرور بعد، اختر «أول مرة أو نسيت كلمة المرور؟».');
+    else if(/email not confirmed/i.test(m))atlasSetStatus('يحتاج بريدك إلى التحقق. اختر «أول مرة أو نسيت كلمة المرور؟» للتحقق برمز البريد.');
+    else atlasSetStatus('تعذر تسجيل الدخول: '+m);
+    return;
+   }
+   if(!data?.session)throw new Error('تم قبول بيانات الدخول لكن لم تُنشأ جلسة. أعد المحاولة.');
+   atlasSaveSessionBackup(data.session);
+   await atlasRestoreSession(data.session);
+  }catch(e){atlasSetStatus(e.message||String(e));}
+  finally{btn.disabled=false;}
+ };
+ $('atlasUseOtp').onclick=async()=>{
+  const email=$('atlasEmail').value.trim();
+  if(!email){atlasSetStatus('أدخل بريدك الإلكتروني أولًا.');return;}
+  atlasAuthMode='otp';atlasOtpEmail=email;
+  const btn=$('atlasUseOtp');btn.disabled=true;
+  atlasSetStatus('جارٍ إرسال رمز تحقق إلى بريدك...');
+  try{
+   const {error}=await atlasSupabase.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});
+   if(error)throw error;
+   $('atlasPasswordLoginFields').style.display='none';
+   $('atlasOtpFields').style.display='block';
+   $('atlasCreatePasswordFields').style.display='none';
+   atlasSetStatus('أرسلنا رمز التحقق. أدخله هنا؛ ستنشئ كلمة مرور بعد التحقق.');
+  }catch(e){atlasSetStatus('تعذر إرسال الرمز: '+(e.message||String(e)));}
+  finally{btn.disabled=false;}
+ };
+ $('atlasVerifyOtp').onclick=async()=>{
+  const token=$('atlasOtp').value.trim();
+  if(!token){atlasSetStatus('أدخل رمز التحقق.');return;}
+  atlasAuthMode='password_setup';
+  const btn=$('atlasVerifyOtp');btn.disabled=true;
+  atlasSetStatus('جارٍ التحقق من البريد الإلكتروني...');
+  try{
+   const {data,error}=await atlasSupabase.auth.verifyOtp({email:atlasOtpEmail,token,type:'email'});
+   if(error)throw error;
+   if(!data?.session)throw new Error('تم التحقق لكن لم تُنشأ جلسة. اطلب رمزًا جديدًا.');
+   if(!atlasSaveSessionBackup(data.session))throw new Error('تعذر حفظ جلسة التحقق في هذا المتصفح. افتح الموقع في Chrome العادي واسمح بحفظ بيانات الموقع.');
+   atlasUser=data.user||data.session.user;
+   window.localStorage.setItem(ATLAS_PENDING_PASSWORD_KEY,'1');window.localStorage.setItem(ATLAS_PENDING_EMAIL_KEY,data.user?.email||atlasOtpEmail);
+   $('atlasOtpFields').style.display='none';
+   $('atlasCreatePasswordFields').style.display='block';
+   $('atlasAuthDescription').textContent='تم التحقق من بريدك الإلكتروني. أنشئ كلمة مرور لحسابك؛ ستستخدمها في مرات الدخول القادمة.';
+   atlasSetStatus('تم التحقق من البريد بنجاح. اختر كلمة مرور قوية وأكدها.');
+  }catch(e){atlasSetStatus('تعذر التحقق: '+(e.message||String(e)));}
+  finally{btn.disabled=false;}
+ };
+ $('atlasSavePassword').onclick=async()=>{
+  const password=$('atlasNewPassword').value;
+  const confirmation=$('atlasConfirmPassword').value;
+  if(password.length<12){atlasSetStatus('اجعل كلمة المرور 12 حرفًا على الأقل.');return;}
+  if(password!==confirmation){atlasSetStatus('كلمتا المرور غير متطابقتين.');return;}
+  const btn=$('atlasSavePassword');btn.disabled=true;
+  atlasSetStatus('جارٍ حفظ كلمة المرور...');
+  try{
+   const {data,error}=await atlasSupabase.auth.updateUser({password,data:{...(atlasUser?.user_metadata||{}),atlas_password_login_enabled:true}});
+   if(error)throw error;
+   if(data?.user)atlasUser=data.user;
+   atlasAuthMode='password';
+   atlasClearPendingPasswordSetup();
+   const {data:sessionData,error:sessionError}=await atlasSupabase.auth.getSession();
+   if(sessionError)throw sessionError;
+   if(!sessionData?.session)throw new Error('حُفظت كلمة المرور، لكن تعذر استعادة جلسة الدخول. سجّل الدخول بالبريد وكلمة المرور الجديدة.');
+   atlasSaveSessionBackup(sessionData.session);
+   $('atlasNewPassword').value='';$('atlasConfirmPassword').value='';
+   await atlasRestoreSession(sessionData.session);
+  }catch(e){atlasSetStatus('تعذر حفظ كلمة المرور: '+(e.message||String(e)));}
+  finally{btn.disabled=false;}
+ };
+ $('atlasBackLogin').onclick=()=>{
+  atlasAuthMode='password';$('atlasOtpFields').style.display='none';$('atlasCreatePasswordFields').style.display='none';$('atlasPasswordLoginFields').style.display='block';$('atlasAuthDescription').textContent='أدخل بريدك الإلكتروني وكلمة المرور. عند أول استخدام، تحقّق من بريدك مرة واحدة ثم أنشئ كلمة مرور خاصة بك.';atlasSetStatus('');
+ };
+ $('atlasCancelPasswordSetup').onclick=()=>{atlasClearPendingPasswordSetup();atlasAuthMode='password';$('atlasCreatePasswordFields').style.display='none';$('atlasOtpFields').style.display='none';$('atlasPasswordLoginFields').style.display='block';$('atlasAuthDescription').textContent='أدخل بريدك الإلكتروني وكلمة المرور. عند أول استخدام، تحقّق من بريدك مرة واحدة ثم أنشئ كلمة مرور خاصة بك.';atlasSetStatus('أُلغيت خطوة إنشاء كلمة المرور. يمكنك تسجيل الدخول أو بدء التحقق من البريد مجددًا.');};
  $('atlasRunImport').onclick=async()=>{const file=$('atlasSourceZip').files?.[0];if(!file){atlasSetStatus('اختر ملف ZIP الأصلي أولًا.');return;}const btn=$('atlasRunImport');btn.disabled=true;try{await atlasImportZip(file);}catch(e){atlasSetStatus('فشل الاستيراد: '+(e.message||String(e)));}finally{btn.disabled=false;}};
- const {data,error}=await atlasSupabase.auth.getSession();if(error)throw error;if(data?.session)await atlasRestoreSession(data.session);
- }catch(e){atlasSetStatus(e.message||String(e));}}
+ const {data,error}=await atlasSupabase.auth.getSession();if(error)throw error;
+ let session=data?.session||null;
+ if(!session){
+  const backup=atlasReadSessionBackup();
+  if(backup){
+   atlasSetStatus('نعثر على جلسة محفوظة؛ جارٍ استعادتها...');
+   const restored=await atlasSupabase.auth.setSession({access_token:backup.access_token,refresh_token:backup.refresh_token});
+   if(restored.error){atlasClearSessionBackup();atlasSetStatus('انتهت صلاحية الجلسة المحفوظة. سجّل الدخول بالبريد وكلمة المرور.');}
+   else session=restored.data?.session||null;
+  }
+ }
+ if(session){atlasSaveSessionBackup(session);if(!atlasResumePendingPasswordSetup(session))await atlasRestoreSession(session);}
+ else if(authStorage.getItem(ATLAS_PENDING_PASSWORD_KEY)==='1'){const pendingEmail=authStorage.getItem(ATLAS_PENDING_EMAIL_KEY)||'';if(pendingEmail)$('atlasEmail').value=pendingEmail;atlasSetStatus('أكمل التحقق من بريدك لإعداد كلمة المرور. اختر «أول مرة أو نسيت كلمة المرور؟» لإرسال رمز جديد.');}
+}catch(e){atlasSetStatus('تعذر تهيئة تسجيل الدخول: '+(e.message||String(e)));}}
 
 
 const STATE_KEY='HATEM_CLINICAL_ATLAS_V4';
