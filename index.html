@@ -78,12 +78,84 @@ body[data-theme="dark"]{
 #atlasAuthCard button.atlas-password-toggle{width:auto;flex:0 0 auto;margin:0;padding:0 10px;border-radius:10px;background:#e8f4f1;color:#126b5d;font-size:12px;line-height:1.4;white-space:nowrap;box-shadow:none}
 @media(max-width:380px){#atlasAuthCard{padding:21px 17px}#atlasAuthCard .atlas-auth-credit strong{font-size:16px}#atlasAuthCard .atlas-auth-credit span{font-size:14px}#atlasAuthCard button.atlas-password-toggle{padding:0 7px;font-size:11px}}
 body.atlas-locked .app-shell,body.atlas-locked .overlay,body.atlas-locked .image-lightbox{display:none!important}body.atlas-read-only .admin-control{display:none!important}
+
+/* ATLAS_AUTH_RESPONSIVE_LAYOUT_V1 */
+#atlasAuthGate{
+  min-height:100vh;min-height:100dvh;overflow-y:auto;overscroll-behavior:contain;
+  padding:clamp(14px,3vw,42px);align-items:center;
+  background:radial-gradient(circle at 12% 12%,#d8f4e9 0,transparent 34%),radial-gradient(circle at 92% 88%,#d9eeea 0,transparent 30%),linear-gradient(135deg,#edf6f2,#f8fbfa);
+}
+#atlasAuthCard{
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  direction:rtl;width:min(100%,1080px);min-height:min(690px,calc(100dvh - 70px));
+  max-height:calc(100dvh - 54px);overflow:hidden;padding:0;text-align:right;
+  border:1px solid #d7e8e1;border-radius:28px;box-shadow:0 28px 90px rgba(14,67,52,.16);
+}
+#atlasAuthCard .atlas-auth-brand-panel{
+  grid-column:1;grid-row:1;position:relative;isolation:isolate;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+  padding:clamp(34px,5vw,66px);
+  color:#f2fffb;background:radial-gradient(circle at 12% 12%,rgba(96,225,193,.24),transparent 34%),linear-gradient(145deg,#0c343b 0%,#0e625b 58%,#087f70 100%);
+}
+#atlasAuthCard .atlas-auth-brand-panel:before,
+#atlasAuthCard .atlas-auth-brand-panel:after{content:"";position:absolute;z-index:-1;border:1px solid rgba(255,255,255,.13);border-radius:50%;pointer-events:none}
+#atlasAuthCard .atlas-auth-brand-panel:before{width:390px;height:390px;inset:auto -175px -190px auto;box-shadow:0 0 0 34px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.02)}
+#atlasAuthCard .atlas-auth-brand-panel:after{width:190px;height:190px;inset:35px auto auto -105px;box-shadow:0 0 0 24px rgba(255,255,255,.025)}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-title{font-size:clamp(29px,3.5vw,43px);line-height:1.45;color:#fff;margin:0 0 10px;text-wrap:balance}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-intro{font-size:clamp(14px,1.35vw,17px);line-height:2;color:rgba(241,255,250,.86);margin:0 0 17px;max-width:38rem}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit{
+  margin:12px 0 0;padding:17px 18px;border:1px solid rgba(255,255,255,.2);
+  border-right:5px solid #76e0c8;border-radius:15px;
+  background:rgba(255,255,255,.09);color:#fff;backdrop-filter:blur(8px);gap:6px;
+}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit strong{font-size:clamp(17px,1.7vw,21px);line-height:1.7;color:#fff}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit span{font-size:clamp(14px,1.35vw,17px);line-height:1.8;color:#d8f5ed}
+#atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit a{font-size:clamp(15px,1.5vw,18px);color:#9cf1dc;direction:ltr;text-align:right}
+#atlasAuthCard .atlas-auth-form-panel{
+  grid-column:2;grid-row:1;min-width:0;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(28px,4.2vw,55px);background:#fff;
+}
+#atlasAuthCard .atlas-auth-form-panel>*{width:100%;max-width:520px;margin-left:auto;margin-right:auto}
+#atlasAuthCard .atlas-auth-form-panel #atlasAuthDescription{margin-top:0;margin-bottom:18px}
+#atlasAuthCard .atlas-auth-form-panel label{margin-top:15px}
+#atlasAuthCard .atlas-auth-form-panel #atlasAuthStatus{max-width:520px}
+#atlasAuthCard .atlas-auth-form-panel .auth-note{max-width:520px}
+@media(max-width:840px){
+  #atlasAuthGate{align-items:flex-start;padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));}
+  #atlasAuthCard{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;width:min(100%,570px);min-height:0;max-height:none;overflow:visible;margin:auto;border-radius:22px;}
+  #atlasAuthCard .atlas-auth-brand-panel{grid-column:1;grid-row:1;padding:clamp(20px,5vw,29px);gap:5px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-title{font-size:clamp(23px,6vw,31px);line-height:1.4;margin-bottom:6px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-intro{font-size:13px;line-height:1.85;margin-bottom:8px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit{margin-top:7px;padding:10px 12px;gap:3px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit strong{font-size:16px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit span{font-size:13px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-credit a{font-size:15px;}
+  #atlasAuthCard .atlas-auth-form-panel{grid-column:1;grid-row:2;padding:20px clamp(17px,5vw,27px) 24px;}
+  #atlasAuthCard .atlas-auth-form-panel #atlasAuthDescription{font-size:13px;line-height:1.8;padding:10px 12px;margin-bottom:12px;}
+}
+@media(max-width:380px){
+  #atlasAuthGate{padding:8px;}
+  #atlasAuthCard{border-radius:17px;}
+  #atlasAuthCard .atlas-auth-brand-panel{padding:17px 15px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-title{font-size:22px;}
+  #atlasAuthCard .atlas-auth-brand-panel .atlas-auth-intro{font-size:12px;}
+  #atlasAuthCard .atlas-auth-form-panel{padding:17px 14px 20px;}
+  #atlasAuthCard button.atlas-password-toggle{padding:0 8px;font-size:11px;}
+}
+@media(min-width:841px) and (max-height:720px){
+  #atlasAuthGate{align-items:flex-start;}
+  #atlasAuthCard{max-height:none;min-height:0;margin:8px auto;}
+  #atlasAuthCard .atlas-auth-brand-panel,#atlasAuthCard .atlas-auth-form-panel{padding-top:28px;padding-bottom:28px;}
+}
+@media(prefers-reduced-motion:no-preference){#atlasAuthCard{animation:atlasAuthEntrance .38s ease-out both}@keyframes atlasAuthEntrance{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
+
 </style>
 <div id="atlasAuthGate" dir="rtl">
  <div id="atlasAuthCard">
-  <h1 class="atlas-auth-title">الموسوعة السريرية التفاعلية</h1>
+  <section class="atlas-auth-brand-panel"><h1 class="atlas-auth-title">الموسوعة السريرية التفاعلية</h1>
   <p class="atlas-auth-intro">مكتبة طبية قابلة للبحث والتحديث، تجمع النصوص المستخرجة من المراجع والملخصات السريرية منظمة وتحتوى على أدوات الحساب في مساحة عمل واحدة.</p>
-  <div class="atlas-auth-credit"><strong>تصميم وإعداد الدكتور حاتم الغنامي.</strong><span>المعرفة الطبية المنظمة، والقرار السريري المسؤول.</span><a href="tel:+967772779358">📞 +967 772 779 358</a></div>
+  <div class="atlas-auth-credit"><strong>تصميم وإعداد الدكتور حاتم الغنامي.</strong><span>المعرفة الطبية المنظمة، والقرار السريري المسؤول.</span><a href="tel:+967772779358">📞 +967 772 779 358</a></div></section>
+  <section class="atlas-auth-form-panel">
   <p id="atlasAuthDescription">أدخل بريدك الإلكتروني وكلمة المرور. عند أول استخدام، تحقّق من بريدك مرة واحدة ثم أنشئ كلمة مرور خاصة بك.</p>
   <label for="atlasEmail">البريد الإلكتروني</label>
   <input id="atlasEmail" type="email" autocomplete="username" inputmode="email" placeholder="name@example.com">
@@ -112,6 +184,7 @@ body.atlas-locked .app-shell,body.atlas-locked .overlay,body.atlas-locked .image
   <div id="atlasAdminImport"><hr style="border:0;border-top:1px solid #e4eeea;margin:20px 0"><strong>تهيئة المحتوى لأول مرة</strong><p>لم يُعثر على محتوى في قاعدة البيانات. بصفتك المسؤول، ارفع ملف ZIP الأصلي للموسوعة لنقل النصوص والصور إلى التخزين المحمي.</p><label for="atlasSourceZip">ملف الموقع الأصلي ZIP</label><input id="atlasSourceZip" type="file" accept=".zip,application/zip"><button id="atlasRunImport">استيراد محتوى الموسوعة بأمان</button></div>
   <div id="atlasAuthStatus" role="status" aria-live="polite"></div>
   <div class="auth-note">لا تشارك كلمة المرور أو رمز التحقق مع أي شخص. لا تُضمّن البيانات الطبية في ملف الموقع العام.</div>
+  </section>
  </div>
 </div>
 <script>
